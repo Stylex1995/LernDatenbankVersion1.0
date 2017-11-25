@@ -36,6 +36,7 @@ public class MainMenu extends AppCompatActivity {
         Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE) ;
         v.vibrate(1000);
 
+        texteliste = new ArrayList<String>();
         texteliste.add("String1");
         texteliste.add("String2");
         texteliste.add("String3");
