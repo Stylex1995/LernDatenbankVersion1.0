@@ -9,12 +9,20 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
+
+
+    ListView listView1;
+    ArrayList<String> texteliste;
 
     Button btn;
     // Zahl willkürlich gewählt
@@ -25,8 +33,20 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        Vibrator v = (Vibrator) getSystemService(VIBRATOR_SERVICE) ;
+        v.vibrate(1000);
+
+        texteliste.add("String1");
+        texteliste.add("String2");
+        texteliste.add("String3");
+        texteliste.add("String4");
 
 
+
+        //TESTKOMMMENTARE
+        //TESTKOMMMENTARE
+        //TESTKOMMMENTARE
+        //TESTKOMMMENTARE
         btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +58,16 @@ public class MainMenu extends AppCompatActivity {
                 }else{
                     ActivityCompat.requestPermissions(MainMenu.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},REQ_CODE_EXTERNAL_STORAGE_PERMISSION);
                 }
+            }
+        });
+
+        listView1 = (ListView) findViewById(R.id.listView);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainMenu.this, android.R.layout.simple_list_item_1, texteliste);
+        listView1.setAdapter(arrayAdapter);
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(), "Auf ListItem geklickt!",Toast.LENGTH_SHORT).show();
             }
         });
 
